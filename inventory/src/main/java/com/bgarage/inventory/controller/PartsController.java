@@ -1,6 +1,6 @@
 package com.bgarage.inventory.controller;
 
-import com.bgarage.inventory.model.Part;
+import com.bgarage.inventory.model.PartModel;
 import com.bgarage.inventory.service.PartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,19 +19,19 @@ public class PartsController {
     PartService partService;
 
     @GetMapping
-    public Collection<Part> getParts() {
+    public Collection<PartModel> getParts() {
         return partService.getParts();
     }
 
     @PostMapping
-    public ResponseEntity<Part> createPart(@RequestBody Part part) {
-        Part savedPart = partService.createPart(part);
-        return new ResponseEntity<>(savedPart, HttpStatus.CREATED);
+    public ResponseEntity<PartModel> createPart(@RequestBody PartModel partModel) {
+        PartModel savedPartModel = partService.createPart(partModel);
+        return new ResponseEntity<>(savedPartModel, HttpStatus.CREATED);
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Part> getPart(@PathVariable String id) {
-        Optional<Part> part = partService.getPart(id);
+    public ResponseEntity<PartModel> getPart(@PathVariable String id) {
+        Optional<PartModel> part = partService.getPart(id);
         if (part.isPresent()) {
             return new ResponseEntity<>(part.get(), HttpStatus.OK);
         }
@@ -39,10 +39,10 @@ public class PartsController {
     }
 
     @PatchMapping(path = "/{id}")
-    public ResponseEntity<Object> updatePart(@PathVariable String id, @RequestBody Part part) {
+    public ResponseEntity<Object> updatePart(@PathVariable String id, @RequestBody PartModel partModel) {
         try {
-            Part updatedPart = partService.updatePart(id, part);
-            return new ResponseEntity<>(updatedPart, HttpStatus.OK);
+            PartModel updatedPartModel = partService.updatePart(id, partModel);
+            return new ResponseEntity<>(updatedPartModel, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }

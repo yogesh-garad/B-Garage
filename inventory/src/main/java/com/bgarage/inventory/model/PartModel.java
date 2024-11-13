@@ -1,22 +1,25 @@
 package com.bgarage.inventory.model;
 
-public class Part {
+public class PartModel {
     private String id;
     private String name;
     private int quantity;
     private int quantityUsed;
+    private String supplier;
+    private int minimumOrderQuantity;
+    private int thresholdLimit;
 
 
-    public Part() {
+    public PartModel() {
     }
 
-    public Part(String id, String name, int quantity) {
+    public PartModel(String id, String name, int quantity) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
     }
 
-    public Part(String id, String name) {
+    public PartModel(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -51,6 +54,29 @@ public class Part {
 
     public void setQuantityUsed(int quantityUsed) {
         this.quantityUsed = quantityUsed;
+    }
+
+    public String getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(String supplier) {
+        this.supplier = supplier;
+    }
+
+    public int getMinimumOrderQuantity() {
+        return minimumOrderQuantity;
+    }
+
+    public void setMinimumOrderQuantity(int minimumOrderQuantity) {
+        this.minimumOrderQuantity = minimumOrderQuantity;
+    }
+    public int getThresholdLimit() {
+        return thresholdLimit;
+    }
+
+    public void setThresholdLimit(int thresholdLimit) {
+        this.thresholdLimit = thresholdLimit;
     }
 
 }
